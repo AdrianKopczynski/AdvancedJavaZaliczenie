@@ -12,9 +12,11 @@ public class CurrencyChange {
     private int ID;
     @Schema(description = "Nazwa waluty")
     private String waluta;
-    @Schema(description = "liczba dni ")
+    @Schema(description = "Liczba dni poprzednich kursow waluty")
     private int dni;
+    @Schema(description = "Data wykonania zapytania")
     private LocalDate dataWykonania;
+    @Schema(description = "Wartosc waluty")
     private Double kurs;
 
     public CurrencyChange(int ID,String waluta,int dni, LocalDate dataWykonania, Double kurs){

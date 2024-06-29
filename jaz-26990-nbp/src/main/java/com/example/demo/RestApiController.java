@@ -17,12 +17,15 @@ public class RestApiController {
     private final NBPService nbpService;
     private final CurrencyChangeRepository currencyChangeRepository;
 
-    @Autowired
     public RestApiController(NBPService nbpService,CurrencyChangeRepository currencyChangeRepository){
         this.nbpService = nbpService;
         this.currencyChangeRepository = currencyChangeRepository;
     }
-
+    @Operation(summary = "Zwraca kurs podanej waluty w konkretnym przedziale czasowym")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Kurs danej waluty", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = CurrencyChange.class))}),
+            @ApiResponse(responseCode = "404", description = "Brak waluty", content = @Content)
+    })
     @GetMapping("/{waluta}")
     public ResponseEntity<Double> getKursWaluty(
             @PathVariable String waluta,

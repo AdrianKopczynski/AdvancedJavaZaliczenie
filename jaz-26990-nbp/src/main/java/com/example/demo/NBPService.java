@@ -14,7 +14,6 @@ import java.util.NoSuchElementException;
 public class NBPService {
     private final RestTemplate restTemplate;
 
-    @Autowired
     public NBPService(RestTemplateBuilder retTemplateBuilder){
         this.restTemplate = retTemplateBuilder.build();
     }
